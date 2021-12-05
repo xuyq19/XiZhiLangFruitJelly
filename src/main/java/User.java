@@ -1,72 +1,142 @@
 /**
- * author: @Lucas Xu
- * date: 2021-12-01
- * version: 0.1
+ * @author xuyuqi
  */
 public class User{
+    public User(){
+
+    }
     private String bankAccountUserId;
+    /**
+     *十位数的银行用户ID
+     */
     private String bankAccountName;
+    /**
+     *银行用户名
+     */
     private String bankAccountPassword;
+    /**
+     *银行用户密码
+     */
     private String bankAccountRealId;
+    /**
+     *银行用户真实ID
+     */
     private String bankAccountPhoneNumber;
-    private String bankAccountSex;
+    /**
+     *银行用户手机号
+     */
+    private char bankAccountSex;
+    /**
+     *银行用户性别
+     */
     private String bankAccountBirthDate;
-    private String bankAccountBalance;
-    public User(String bankAccountName,String bankAccountPassword,String bankAccountRealId,String bankAccountPhoneNumber,String bankAccountSex,String bankAccountBirthDate){
+    /**
+     *银行用户生日
+     */
+    private int bankAccountBalance=2000;
+    /**
+     *银行用户余额
+     */
+    public User(String bankAccountUserId, String bankAccountName, String bankAccountPassword, String bankAccountRealId, String bankAccountPhoneNumber, char bankAccountSex, String bankAccountBirthDate, int bankAccountBalance) {
         this.bankAccountName = bankAccountName;
         this.bankAccountPassword = bankAccountPassword;
         this.bankAccountRealId = bankAccountRealId;
         this.bankAccountPhoneNumber = bankAccountPhoneNumber;
         this.bankAccountSex = bankAccountSex;
         this.bankAccountBirthDate = bankAccountBirthDate;
+        this.bankAccountBalance = bankAccountBalance;
     }
     public String getBankAccountUserId(){
         return bankAccountUserId;
     }
+    /**
+     *获取银行用户ID
+     */
     public String getBankAccountName(){
         return bankAccountName;
     }
+    /**
+     *获取银行用户名
+     */
     public String getBankAccountPassword(){
         return bankAccountPassword;
     }
+    /**
+     *获取银行用户密码
+     */
     public String getBankAccountRealId(){
         return bankAccountRealId;
     }
+    /**
+     *获取银行用户真实ID
+     */
     public String getBankAccountPhoneNumber(){
         return bankAccountPhoneNumber;
     }
-    public String getBankAccountSex(){
+    public char getBankAccountSex(){
         return bankAccountSex;
     }
+    /**
+     *获取银行用户性别
+     */
     public String getBankAccountBirthDate(){
         return bankAccountBirthDate;
     }
-    public String getBankAccountBalance(){
+    /**
+     *获取银行用户生日
+     */
+    public int getBankAccountBalance(){
         return bankAccountBalance;
     }
+    /**
+     *获取银行用户余额
+     */
     public void setBankAccountUserId(String bankAccountUserId){
         this.bankAccountUserId = bankAccountUserId;
     }
-    public void setBankAccountName(String bankAccountName){
-        this.bankAccountName = bankAccountName;
+    /**
+     *设置银行用户ID
+     */
+    public void setBankAccountName(String bankAccountBalance){
+        this.bankAccountName = bankAccountBalance;
     }
+    /**
+     *设置银行用户名
+     */
     public void setBankAccountPassword(String bankAccountPassword){
         this.bankAccountPassword = bankAccountPassword;
     }
+    /**
+     *设置银行用户密码
+     */
     public void setBankAccountRealId(String bankAccountRealId){
         this.bankAccountRealId = bankAccountRealId;
     }
+    /**
+     *设置银行用户真实ID
+     */
     public void setBankAccountPhoneNumber(String bankAccountPhoneNumber){
         this.bankAccountPhoneNumber = bankAccountPhoneNumber;
     }
-    public void setBankAccountSex(String bankAccountSex){
+    /**
+     *设置银行用户手机号
+     */
+    public void setBankAccountSex(char bankAccountSex){
         this.bankAccountSex = bankAccountSex;
     }
+    /**
+     *设置银行用户性别
+     */
     public void setBankAccountBirthDate(String bankAccountBirthDate){
         this.bankAccountBirthDate = bankAccountBirthDate;
     }
-    public void setBankAccountBalance(String bankAccountBalance){
+    /**
+     *设置银行用户生日
+     */
+    public void setBankAccountBalance(int bankAccountBalance){
         this.bankAccountBalance = bankAccountBalance;
     }
-
+    /**
+     *设置银行用户余额
+     */
 }
