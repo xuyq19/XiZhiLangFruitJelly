@@ -1,29 +1,50 @@
-/**
- * @author zhangjiawen
- */
 import java.util.*;
 import java.util.Scanner;
-
+/**
+ * @author xuyuqi
+ */
 public class ServiceUser {
-    public boolean testInformation(String bankAccountUserId,String bankAccountName,String bankAccountPassword,String bankAccountRealId,String bankAccountPhoneNumber,char bankAccountSex,String bankAccountBirthDate){
-        if(bankAccountUserId.length()!=10){
+    static final int USER_ID_LENGTH =10;
+    /**
+     * @param userId
+     */
+    static final int USER_NAME_LENGTH =10;
+    static final int USER_REAL_ID_LENGTH =12;
+    static final int USER_BIRTH_DATE_LENGTH =10;
+
+    public ServiceUser() {
+    }
+
+    private boolean testInformation(String bankAccountUserId,String bankAccountName,String bankAccountPassword,String bankAccountRealId,String bankAccountPhoneNumber,char bankAccountSex,String bankAccountBirthDate){
+        if(bankAccountUserId.length()!=USER_ID_LENGTH){
             System.out.println("The length of User ID must be 10!");
             return false;
         }
+        /**
+         * Test the length of User Name
+         */
         for(int i = 0;i < bankAccountUserId.length();i++){
             if(bankAccountUserId.charAt(i) > '9' || bankAccountUserId.charAt(i) < '0'){
-                System.out.println("The accountid must be numbers!");
                 return false;
             }
+            /**
+             * Test User Real ID
+             */
         }
-        if(bankAccountName.length()>10){
+        if(bankAccountName.length()>USER_NAME_LENGTH){
             System.out.println("The length of user name must be shorter than 10!");
             return false;
         }
-        if(bankAccountRealId.length()!=12) {
+        /**
+         * Test the length of User Name
+         */
+        if(bankAccountRealId.length()!=USER_REAL_ID_LENGTH) {
             System.out.println("The length of real ID must be 12!");
             return false;
         }
+        /**
+         * Test User Phone Number
+         */
         for(int i = 0;i < bankAccountRealId.length();i++){
             if(bankAccountRealId.charAt(i) > '9' ||bankAccountRealId.charAt(i) < '0'){
                 System.out.println("The id must be numbers!");
@@ -33,7 +54,7 @@ public class ServiceUser {
         if(bankAccountSex!='F'&&bankAccountSex!='M'){
             System.out.println("The sex must be F or M");
         }
-        if(bankAccountBirthDate.length()!=10){
+        if(bankAccountBirthDate.length()!=USER_BIRTH_DATE_LENGTH){
             System.out.println("The format of birthday must be YYYY-MM-DD");
             return false;
         }
@@ -58,30 +79,32 @@ public class ServiceUser {
             case 1:{
                 System.out.print("Please input the name:");
                 String ausername = keyin.next();
-                if(testinfo(auser.getAccountId(),ausername,aresident.getPassword(),aresident.getId(),aresident.getPhone(),aresident.getSex(),aresident.getBirthday())==true){
-                    aresident.setUsername(ausername);
+                if(testInformation(auser.getBankAccountUserId(),ausername,auser.getBankAccountPassword(),auser.getBankAccountRealId(),auser.getBankAccountPhoneNumber(),auser.getBankAccountSex(),auser.getBankAccountBirthDate())==true){
+                    auser.setBankAccountName(ausername);
                 }
                 else {
                     System.out.println("Reset unsuccessfully!");
                 }
+                break;
             }
             case 2:{
                 System.out.print("Please input the phone number:");
                 String aphone = keyin.next();
-                if(testinfo(aresident.getAccountId(),aresident.getUsername(),aresident.getPassword(),aresident.getId(),aphone,aresident.getSex(),aresident.getBirthday())==true){
-                    aresident.setUsername(aphone);
+                if(testInformation(auser.getBankAccountUserId(),auser.getBankAccountName(),auser.getBankAccountPassword(),auser.getBankAccountRealId(),aphone,auser.getBankAccountSex(),auser.getBankAccountBirthDate())==true){
+                    auser.setBankAccountPhoneNumber(aphone);
                     System.out.println("Reset the phonenumber successfully!");
                 }
                 else {
                     System.out.println("Reset unsuccessfully!");
                 }
+                break;
             }
             case 3:{
                 int time = 5;
                 while(time >= 0){
                     System.out.print("Please input the old password:");
                     String apassword = keyin.next();
-                    if(apassword.equals(aresident.getPassword())){
+                    if(apassword.equals(auser.getBankAccountPassword())){
                         System.out.print("Correct!Please the new password:");
                         apassword = keyin.next();
                         System.out.println("Reset the password successfully!");
@@ -98,22 +121,22 @@ public class ServiceUser {
         }
         keyin.close();
     }
-    public boolean withdrawmoney(fmResident aResident,double money){
-        if(aResident.getMoney()>money){
-            aResident.WithdrawMoney(money);
+    public boolean withdrawMoney(User auser,double money){
+        if(auser.getBankAccountBalance()>money){
+            auser.withdrawMoney(money);
             return true;
         }
         else{
             return false;
         } 
     }
-    public void depositmoney(fmResident aResident,double money){
-        depositmoney(aResident, money);
+    public void depositMoney(User auser,double money){
+        depositMoney(auser, money);
     }
-    public void transport(fmResident from,fmResident to,double money){
-        if(from.getMoney()>=money){
-            from.WithdrawMoney(money);
-            to.DepositMoney(money);
+    public void transferMoney(User from,User to,double money){
+        if(from.getBankAccountBalance()>=money){
+            from.withdrawMoney(money);
+            to.depositMoney(money);
         }
     }
 }
