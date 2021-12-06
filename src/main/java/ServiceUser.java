@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.Scanner;
 /**
  * @author xuyuqi
  */
@@ -51,7 +50,7 @@ public class ServiceUser {
                 return false;
             }
         }
-        if(bankAccountSex!='F'&&bankAccountSex!='M'){
+        if(bankAccountSex != 'F' && bankAccountSex != 'M'){
             System.out.println("The sex must be F or M");
         }
         if(bankAccountBirthDate.length()!=USER_BIRTH_DATE_LENGTH){
@@ -73,12 +72,12 @@ public class ServiceUser {
     public void setInformation(User auser){
         System.out.println("Please input the id of the information you want to reset");
         System.out.print("1.username\n2.phone number\n3.password\n");
-        Scanner keyin = new Scanner(System.in);
-        int choose = keyin.nextInt();
+        Scanner sc = new Scanner(System.in);
+        int choose = sc.nextInt();
         switch (choose){
             case 1:{
                 System.out.print("Please input the name:");
-                String ausername = keyin.next();
+                String ausername = sc.next();
                 if(testInformation(auser.getBankAccountUserId(),ausername,auser.getBankAccountPassword(),auser.getBankAccountRealId(),auser.getBankAccountPhoneNumber(),auser.getBankAccountSex(),auser.getBankAccountBirthDate())==true){
                     auser.setBankAccountName(ausername);
                 }
@@ -89,10 +88,10 @@ public class ServiceUser {
             }
             case 2:{
                 System.out.print("Please input the phone number:");
-                String aphone = keyin.next();
+                String aphone = sc.next();
                 if(testInformation(auser.getBankAccountUserId(),auser.getBankAccountName(),auser.getBankAccountPassword(),auser.getBankAccountRealId(),aphone,auser.getBankAccountSex(),auser.getBankAccountBirthDate())==true){
                     auser.setBankAccountPhoneNumber(aphone);
-                    System.out.println("Reset the phonenumber successfully!");
+                    System.out.println("Reset the phone number successfully!");
                 }
                 else {
                     System.out.println("Reset unsuccessfully!");
@@ -103,10 +102,10 @@ public class ServiceUser {
                 int time = 5;
                 while(time >= 0){
                     System.out.print("Please input the old password:");
-                    String apassword = keyin.next();
+                    String apassword = sc.next();
                     if(apassword.equals(auser.getBankAccountPassword())){
                         System.out.print("Correct!Please the new password:");
-                        apassword = keyin.next();
+                        apassword = sc.next();
                         System.out.println("Reset the password successfully!");
                     }
                     else {
@@ -118,8 +117,11 @@ public class ServiceUser {
                     System.out.println("Time is up!");
                 }
             }
+            default:{
+                System.out.println("Please input the right number!");
+            }
         }
-        keyin.close();
+        sc.close();
     }
     public boolean withdrawMoney(User auser,double money){
         if(auser.getBankAccountBalance()>money){
