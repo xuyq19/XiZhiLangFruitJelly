@@ -48,7 +48,7 @@ public class ServiceUser {
             return false;
         }
     }
-    public void setinfo(fmResident aresident){
+    public void setinfo(fmResident auser){
         System.out.println("Please input the id of the information you want to reset");
         System.out.print("1.username\n2.phone number\n3.password\n");
         Scanner keyin = new Scanner(System.in);
@@ -57,8 +57,8 @@ public class ServiceUser {
             case 1:{
                 System.out.print("Please input the usernaem:");
                 String ausername = keyin.next();
-                if(testinfo(aresident.getAccountId(),ausername,aresident.getPassword(),aresident.getId(),aresident.getPhone(),aresident.getSex(),aresident.getBirthday())==true){
-                    aresident.setUsername(ausername);
+                if(testinfo(auser.getAccountId(),ausername,auser.getPassword(),auser.getId(),auser.getPhone(),auser.getSex(),auser.getBirthday())==true){
+                    auser.setUsername(ausername);
                 }
                 else {
                     System.out.println("Reset unsuccessfully!");
@@ -67,8 +67,8 @@ public class ServiceUser {
             case 2:{
                 System.out.print("Please input the phone number:");
                 String aphone = keyin.next();
-                if(testinfo(aresident.getAccountId(),aresident.getUsername(),aresident.getPassword(),aresident.getId(),aphone,aresident.getSex(),aresident.getBirthday())==true){
-                    aresident.setUsername(aphone);
+                if(testinfo(auser.getAccountId(),auser.getUsername(),auser.getPassword(),auser.getId(),aphone,auser.getSex(),auser.getBirthday())==true){
+                    auser.setUsername(aphone);
                     System.out.println("Reset the phonenumber successfully!");
                 }
                 else {
@@ -80,7 +80,7 @@ public class ServiceUser {
                 while(time >= 0){
                     System.out.print("Please input the old password:");
                     String apassword = keyin.next();
-                    if(apassword.equals(aresident.getPassword())){
+                    if(apassword.equals(auser.getPassword())){
                         System.out.print("Correct!Please the new password:");
                         apassword = keyin.next();
                         System.out.println("Reset the password successfully!");
@@ -97,17 +97,17 @@ public class ServiceUser {
         }
         keyin.close();
     }
-    public boolean withdrawmoney(fmResident aResident,double money){
-        if(aResident.getMoney()>money){
-            aResident.WithdrawMoney(money);
+    public boolean withdrawmoney(fmResident auser,double money){
+        if(auser.getMoney()>money){
+            auser.WithdrawMoney(money);
             return true;
         }
         else{
             return false;
         } 
     }
-    public void depositmoney(fmResident aResident,double money){
-        depositmoney(aResident, money);
+    public void depositmoney(fmResident auser,double money){
+        depositmoney(auser, money);
     }
     public void transport(fmResident from,fmResident to,double money){
         if(from.getMoney()>=money){

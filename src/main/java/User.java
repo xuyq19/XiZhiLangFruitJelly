@@ -33,7 +33,7 @@ public class User{
     /**
      *银行用户生日
      */
-    private int bankAccountBalance=2000;
+    private double bankAccountBalance=2000;
     /**
      *银行用户余额
      */
@@ -85,7 +85,7 @@ public class User{
     /**
      *获取银行用户生日
      */
-    public int getBankAccountBalance(){
+    public double getBankAccountBalance(){
         return bankAccountBalance;
     }
     /**
@@ -139,4 +139,13 @@ public class User{
     /**
      *设置银行用户余额
      */
+    public void withdrawMoney(double money){
+        this.bankAccountBalance = this.bankAccountBalance-money;
+    }
+    /**
+     *取款
+     */
+    public void depositMoney(double money){
+        this.bankAccountBalance = this.bankAccountBalance+money;
+    }
 }
