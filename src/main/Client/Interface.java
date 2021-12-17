@@ -1,3 +1,4 @@
+package Client;
 import javax.swing.*;
 public class Interface {
     Interface(){

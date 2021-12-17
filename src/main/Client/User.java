@@ -1,9 +1,9 @@
 /**
  * @author xuyuqi
  */
+package Client;
 public class User{
     public User(){
-
     }
     private String bankAccountUserId;
     /**

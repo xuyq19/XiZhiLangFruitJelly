@@ -1,3 +1,5 @@
+package Client;
+import Client.User;
 import java.util.Scanner;
 /**
  * @author xuyuqi
@@ -116,6 +118,7 @@ public class ServiceUser {
                 if(time == 0){
                     System.out.println("Time is up!");
                 }
+                break;
             }
             default:{
                 System.out.println("Please input the right number!");
